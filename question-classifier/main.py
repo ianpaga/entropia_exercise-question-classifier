@@ -6,7 +6,7 @@ This file sets up the FastAPI application and tells it to use the routes defined
 """
 
 app = FastAPI() # FastAPI application instance
-app.include_router(questions_router) # it connects the routes in questions_api.py to the main application
+app.include_router(questions_router) # it connects the routes in questions_api.py to the main app
 
 
 
