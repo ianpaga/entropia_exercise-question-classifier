@@ -11,6 +11,7 @@ This file defines the specific behavior for the /ask/ route, handling
 the logic for classifying questions and generating responses.
 @router.post("/ask/"): This decorator defines a route at /ask/ that accepts POST requests. 
 When a POST request is sent to /ask/, the ask_question function is executed.
+(async: prevents blocking operations and allows the server to handle multiple requests concurrently)
 """
 
 router = APIRouter()
