@@ -294,7 +294,29 @@ test_main.py ...
 
 To build and run the Docker container for this project, follow these steps:
 
-1. **Build the Docker Image:**
+### 1. Export Key
+
+- Export groq key before building the Docker image. Run on terminal:
+
+```bash
+export GROQ_API_KEY = ‘YOUR_GROQ_KEY_1234567’
+```
+
+If not the key isn't exported the following error will be raised by `config.py`:
+
+```bash
+raise ValueError('API KEY NOT FOUND!')
+ValueError: API KEY NOT FOUND!
+```
+
+- Check if the key has be correctly exported 
+
+```bash
+$GROQ_API_KEY
+```
+Your key should be printed on the terminal. Now you can build and run docker.
+
+### 2. **Build the Docker Image:**
    ```bash
    ./docker_build_run.sh
    ```
@@ -312,6 +334,39 @@ To build and run the Docker container for this project, follow these steps:
     docker run -d --restart unless-stopped -e GROQ_API_KEY -p 8000:8000 llm_app
    ```
    Last command runs the container in detached mode (freeing the terminal), with the server listening on port 8000.
+
+### 3. Check status and send messege to endpoint /ask/
+
+- You can check the status of your container:
+
+```bash
+docker ps -a
+```
+
+Or one can go to the Docker app, click on the container and see the Logs, which should look something like this:
+
+```bash
+2024-09-03 10:57:35 INFO:     Started server process [1]
+2024-09-03 10:57:35 INFO:     Waiting for application startup.
+2024-09-03 10:57:35 INFO:     Application startup complete.
+2024-09-03 10:57:35 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+- Send a message with POST to http://localhost:8000/ask/ : 
+
+```bash
+{
+  "text": "What are the legal implications of not paying medical bills?"
+}
+```
+click SEND in POSTMAN and see the output:
+
+```bash
+{
+    "category": "legal",
+    "answer": "As a seasoned lawyer with experience in multiple areas of law, including intellectual property, criminal defense, and contract law, I would provide the following detailed and legally-informed response to address the client's concerns regarding the legal implications of not paying medical bills. […]”
+}
+```
 
 ## Summary
 
