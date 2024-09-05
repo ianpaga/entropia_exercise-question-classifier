@@ -370,4 +370,4 @@ click SEND in POSTMAN and see the output:
 
 ## Summary
 
-The FastAPI server in this project is can classify and respond to questions provided using a LLM. It's fully Dockerized for easy deployment, and suitable for a production environment.
+The FastAPI server in this project can classify and respond to questions provided using a LLM. It's fully Dockerized for easy deployment, and suitable for a production environment.
