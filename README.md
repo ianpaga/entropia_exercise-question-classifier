@@ -302,7 +302,7 @@ To build and run the Docker container for this project, follow these steps:
 export GROQ_API_KEY = ‘YOUR_GROQ_KEY_1234567’
 ```
 
-If not the key isn't exported the following error will be raised by `config.py`:
+If the key is not exported the following error will be raised by `config.py`:
 
 ```bash
 raise ValueError('API KEY NOT FOUND!')
